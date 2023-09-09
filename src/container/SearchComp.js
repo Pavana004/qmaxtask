@@ -20,6 +20,7 @@ import IconButton from '@mui/material/IconButton';
 
 
 
+
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -90,7 +91,7 @@ const SearchComp = () => {
 
     const handleDelete = (id) => {
 
-        const deletePost = postData.filter((del) => del.id !== id)
+        const deletePost = postData.filter((del) => del.id !== id);
         setPostData(deletePost);
 
     }
@@ -143,7 +144,7 @@ const SearchComp = () => {
             <Container sx={{ width: "100%" }}>
                 <Grid container spacing={4} sx={{ width: "100%" }}>
                     {
-                        result.map((res) => {
+                     result.length ?  ( result.map((res) => {
                             return (
                                 <Grid item key={res.item.id} xs={12} md={6} lg={4} >
                                     <Card sx={{ Width: "50%", height: "100%", cursor: "pointer" }} >
@@ -172,7 +173,13 @@ const SearchComp = () => {
                                     </Card>
                                 </Grid>
                             )
-                        })
+                        }) ): (
+                         <Typography
+                         variant="h4"
+                         sx={{ textAlign:'center',margin:'auto',paddingTop:'20px' }}
+                         >Back.....</Typography>
+                     )
+                     
                     }
                 </Grid>
             </Container>
